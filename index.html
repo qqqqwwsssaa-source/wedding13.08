@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Максим & Ангелина</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#f8f2f1;
+font-family:'Montserrat',sans-serif;
+color:#6f5a54;
+overflow-x:hidden;
+}
+
+.container{
+max-width:520px;
+margin:0 auto;
+background:#fffdfc;
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+position:relative;
+height:100vh;
+overflow:hidden;
+}
+
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+object-position:center top;
+filter:brightness(.82);
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(to bottom,rgba(0,0,0,.1),rgba(0,0,0,.35));
+}
+
+.hero-content{
+position:absolute;
+inset:0;
+z-index:3;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+color:white;
+padding:40px 20px;
+}
+
+.hero-title{
+font-family:'Cormorant Garamond',serif;
+font-size:66px;
+font-weight:400;
+line-height:1;
+margin-top:35px;
+}
+
+.hero-names{
+font-family:'Cormorant Garamond',serif;
+font-size:52px;
+font-weight:300;
+margin-top:4px;
+}
+
+.decor-line{
+display:none;
+}
+
+.hero-date{
+margin-top:auto;
+margin-bottom:90px;
+font-family:'Cormorant Garamond',serif;
+font-size:74px;
+letter-spacing:.08em;
+}
+
+/* ---------- COMMON ---------- */
+
+.section{
+padding:70px 30px;
+text-align:center;
+}
+
+.section-title{
+font-family:'Cormorant Garamond',serif;
+font-size:52px;
+font-weight:400;
+color:#bb7f7b;
+margin-bottom:25px;
+}
+
+.text{
+font-size:15px;
+line-height:1.9;
+color:#75635d;
+}
+
+.hearts{
+margin-top:22px;
+display:flex;
+justify-content:center;
+gap:12px;
+color:#e5a6a1;
+font-size:20px;
+}
+
+/* ---------- CALENDAR ---------- */
+
+.calendar-wrap{
+padding:70px 25px;
+background:#fff;
+}
+
+.calendar-title{
+display:none;
+}
+
+.calendar-date{
+display:none;
+}
+
+.calendar{
+background:#fff;
+border-radius:30px;
+padding:28px;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+border:1px solid #f0e7e5;
+}
+
+.calendar-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding-bottom:18px;
+border-bottom:1px solid #f0e7e5;
+margin-bottom:20px;
+}
+
+.calendar-month{
+font-family:'Cormorant Garamond',serif;
+font-size:44px;
+color:#bb7f7b;
+}
+
+.calendar-year{
+font-size:26px;
+letter-spacing:.08em;
+color:#9f8c87;
+}
+
+.weekdays,
+.days{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+text-align:center;
+}
+
+.weekdays{
+margin-bottom:16px;
+font-size:14px;
+color:#8b7b76;
+}
+
+.days div{
+padding:15px 0;
+font-size:18px;
+position:relative;
+}
+
+.heart-day{
+font-weight:600;
+color:#6f5a54;
+}
+
+.heart-day::before{
+content:"♡";
+position:absolute;
+font-size:58px;
+font-weight:300
+font-family:serif;
+left:50%;
+top:50%;
+transform:translate(-50%,-52%);
+color:#cf8f8b;
+line-height:1;
+display:flex;
+align-items:center;
+justify-content:center;
+pointer-events: none;
+}
+
+/* ---------- CARD ---------- */
+
+.card{
+background:#fdf5f4;
+border-radius:26px;
+padding:28px 24px;
+position:relative;
+overflow:hidden;
+margin:18px;
+}
+
+.card-title{
+font-family:'Cormorant Garamond',serif;
+font-size:42px;
+color:#bb7f7b;
+margin-bottom:24px;
+}
+
+/* ---------- BUTTON ---------- */
+
+.btn{
+display:inline-block;
+padding:12px 24px;
+background:linear-gradient(135deg,#eba8a3,#d98b88);
+border-radius:999px;
+color:white;
+text-decoration:none;
+font-size:13px;
+margin-top:15px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+/* ---------- LOCATION ---------- */
+
+.location-item{
+margin-bottom:28px;
+}
+
+.location-name{
+font-family:'Cormorant Garamond',serif;
+font-size:32px;
+margin-bottom:8px;
+color:#6f5a54;
+}
+
+.location-text{
+font-size:14px;
+line-height:1.7;
+}
+
+/* ---------- TIMELINE ---------- */
+
+.timeline{
+position:relative;
+padding-left:30px;
+}
+
+.timeline::before{
+content:"";
+position:absolute;
+left:6px;
+top:0;
+bottom:0;
+width:2px;
+background:#e6b8b4;
+}
+
+.timeline-item{
+position:relative;
+margin-bottom:28px;
+}
+
+.timeline-item::before{
+content:"";
+position:absolute;
+left:-30px;
+top:8px;
+width:12px;
+height:12px;
+border-radius:50%;
+background:#d99a96;
+}
+
+.timeline-time{
+font-family:'Cormorant Garamond',serif;
+font-size:34px;
+color:#6f5a54;
+margin-bottom:6px;
+}
+
+.timeline-text{
+line-height:1.6;
+}
+
+.badge{
+display:inline-block;
+padding:6px 12px;
+border-radius:999px;
+background:#f3d7d3;
+font-size:11px;
+margin-top:8px;
+}
+
+/* ---------- WISHES ---------- */
+
+.line-heart{
+display:flex;
+align-items:center;
+gap:14px;
+margin:18px 0 24px;
+}
+
+.line-heart::before,
+.line-heart::after{
+content:"";
+height:1px;
+flex:1;
+background:#d8b5b0;
+}
+
+.line-heart span{
+color:#cf8f8b;
+font-size:18px;
+}
+
+/* ---------- DRESS ---------- */
+
+.palette{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:22px;
+flex-wrap:wrap;
+}
+
+.color{
+width:58px;
+height:58px;
+border-radius:16px;
+}
+
+/* ---------- MEMORIES ---------- */
+
+.memory-title{
+font-family:'Cormorant Garamond',serif;
+font-size:48px;
+color:#bb7f7b;
+margin-bottom:18px;
+}
+
+/* ---------- RSVP ---------- */
+
+.rsvp{
+background:#f9ecea;
+padding:55px 30px;
+text-align:center;
+margin-top:18px;
+}
+
+.rsvp-title{
+font-family:'Cormorant Garamond',serif;
+font-size:44px;
+color:#bb7f7b;
+margin-bottom:14px;
+}
+
+/* ---------- FINAL ---------- */
+
+.final{
+position:relative;
+margin-top:0;
+}
+
+.final img{
+width:100%;
+display:block;
+}
+
+.final-text{
+padding:40px 30px 60px;
+text-align:center;
+background:#fffdfc;
+font-family:'Cormorant Garamond',serif;
+font-size:28px;
+line-height:1.5;
+color:#9d706c;
+}
+
+@media(max-width:600px){
+
+.hero-title{
+font-size:52px;
+}
+
+.hero-names{
+font-size:42px;
+}
+
+.hero-date{
+font-size:56px;
+}
+
+.section-title,
+.card-title,
+.rsvp-title,
+.memory-title{
+font-size:38px;
+}
+
+.final-text{
+font-size:24px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+
+<section class="hero">
+
+<img src="https://drive.google.com/thumbnail?id=1hOqpFknAucrbtvM3-OTNuKiLxIAcHEnS&sz=w1600">
+
+<div class="hero-content">
+
+<div class="hero-title">Мы женимся!</div>
+
+<div class="hero-names">Ангелина & Максим</div>
+
+<div class="hero-date">13|08|2026</div>
+
+</div>
+
+</section>
+
+<!-- INTRO -->
+
+<section class="section">
+
+<h2 class="section-title">
+Дорогие родные и друзья!
+</h2>
+
+<p class="text">
+Мы счастливы поделиться с вами радостной новостью:
+скоро мы станем семьей. Этот день мы хотим провести
+в кругу самых близких людей и будем рады видеть вас рядом
+</p>
+
+<div class="hearts">
+<span>♥</span>
+<span>♥</span>
+<span>♥</span>
+</div>
+
+</section>
+
+<!-- CALENDAR -->
+
+<section class="calendar-wrap">
+
+<div class="calendar">
+
+<div class="calendar-head">
+
+<div class="calendar-month">Август</div>
+
+<div class="calendar-year">2026</div>
+
+</div>
+
+<div class="weekdays">
+<div>ПН</div>
+<div>ВТ</div>
+<div>СР</div>
+<div>ЧТ</div>
+<div>ПТ</div>
+<div>СБ</div>
+<div>ВС</div>
+</div>
+
+<div class="days">
+<div></div><div></div><div></div><div></div><div></div><div>1</div><div>2</div>
+<div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div>
+<div>10</div><div>11</div><div>12</div><div class="heart-day">13</div><div>14</div><div>15</div><div>16</div>
+<div>17</div><div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div>
+<div>24</div><div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div>
+<div>31</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- LOCATION -->
+
+<section class="card">
+
+<h3 class="card-title">Локации</h3>
+
+<div class="location-item">
+
+<div class="location-name">ЗАГС</div>
+
+<div class="location-text">
+г. Тюмень<br>
+ул. Малыгина 85
+</div>
+
+<a class="btn" href="https://2gis.ru/tyumen/search/Малыгина%2085">
+Открыть в 2ГИС
+</a>
+
+</div>
+
+<div class="location-item">
+
+<div class="location-name">Банкет</div>
+
+<div class="location-text">
+Zima&leto park<br>
+д. Падерина<br>
+ул. Хвойная 10
+</div>
+
+<a class="btn" href="https://go.2gis.com/tyumen">
+Открыть в 2ГИС
+</a>
+
+</div>
+
+</section>
+
+<!-- PROGRAM -->
+
+<section class="card">
+
+<h3 class="card-title">Программа дня</h3>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<div class="timeline-time">15:10</div>
+<div class="timeline-text">
+сбор гостей у ЗАГС
+</div>
+<div class="badge">
+присутствие по желанию
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-time">15:30</div>
+<div class="timeline-text">
+торжественная регистрация
+</div>
+<div class="badge">
+присутствие по желанию
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-time">16:40</div>
+<div class="timeline-text">
+сбор гостей на банкет
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-time">17:00</div>
+<div class="timeline-text">
+банкет
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-time">21:00</div>
+<div class="timeline-text">
+торт / завершение вечера
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- WISHES -->
+
+<section class="card">
+
+<h3 class="card-title">Пожелания</h3>
+
+<div class="line-heart">
+<span>♥</span>
+</div>
+
+<p class="text">
+Мы не хотим обременять вас выбором подарка,
+поэтому будем рады вкладу
+в бюджет нашей молодой семьи
+</p>
+
+</section>
+
+<!-- DRESS -->
+
+<section class="card">
+
+<h3 class="card-title">Дресс-код</h3>
+
+<p class="text">
+Мы очень стараемся сделать этот праздник особенным
+и будем рады, если в своих нарядах Вы поддержите
+стиль нашей свадьбы данными оттенками:
+</p>
+
+<div class="palette">
+
+<div class="color" style="background:#6e4a3e"></div>
+<div class="color" style="background:#d4b59a"></div>
+<div class="color" style="background:#e4b2a8"></div>
+<div class="color" style="background:#9ca77c"></div>
+<div class="color" style="background:#70733e"></div>
+
+</div>
+
+</section>
+
+<!-- MEMORIES -->
+
+<section class="section">
+
+<h2 class="memory-title">
+Воспоминания
+</h2>
+
+<p class="text">
+Чтобы ни один трогательный момент этого дня
+не потерялся, мы создали чат,
+где вы сможете делиться фото и видео
+с дня торжества
+</p>
+
+<a class="btn" href="https://max.ru/join/T6Z_0k2GAUqZAbLHQGRtlj5mVpYjX3Jzcmdds7ZwmHc">
+Перейти в чат
+</a>
+
+</section>
+
+<!-- RSVP -->
+
+<section class="rsvp">
+
+<h2 class="rsvp-title">
+Подтверждение присутствия
+</h2>
+
+<p class="text">
+Просим вас подтвердить ваше присутствие
+на нашем торжестве
+</p>
+
+<a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScNMekC07Ren_WScOQxJdgSqzRhVd5mGUxgwpze4YF48pAcwA/viewform?usp=publish-editor">
+Перейти к опросу
+</a>
+
+</section>
+
+<!-- FINAL -->
+
+<section class="final">
+
+<img src="https://drive.google.com/thumbnail?id=1m0a-6D9XIOd6tEozOe0OIT8kK7z6VijX&sz=w1600">
+
+<div class="final-text">
+Будем рады видеть вас<br>
+на празднике нашей семьи 🤍<br>
+с любовью, Максим и Ангелина
+</div>
+
+</section>
+
+</div>
+
+</body>
+</html>
